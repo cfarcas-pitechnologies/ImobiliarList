@@ -1,0 +1,31 @@
+.dn {
+    display: none !important;
+} 
+
+.paginator button {
+    background-color: #eee;
+    border: 1px solid #bbb;
+    color: #888;
+}
+.paginator button.active {
+    background-color: #ff8800;
+    color: #fff;
+}
+
+.usage-image {
+    margin: 60px 0 30px;
+}
+.twitter-typeahead .tt-menu {
+    background-color: #474747;
+    border: 0 none;
+    width: 100%;
+    top:55%!important;
+    border-left: 2px solid #afafaf;
+    border-top: 1px solid #afafaf;
+}
+.tt-menu .tt-suggestion.tt-selectable {
+     padding: 7px 25px;
+}
+.tt-menu .tt-suggestion.tt-selectable:hover {
+     background-color: #3399ff;
+}

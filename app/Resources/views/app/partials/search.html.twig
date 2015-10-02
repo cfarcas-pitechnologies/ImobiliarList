@@ -1,0 +1,95 @@
+<div id="bg-image-header" class="fullwidth-section full-screen parallax">
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="search">
+                    <div class="row">
+                        <div class="span12">
+                            <button class="all active" onclick="changeSearchType('all')"><i class="fa fa-hdd-o"></i> Toate</button>
+                            <button class="sell" onclick="changeSearchType('sell')"><i class="fa fa-tags"></i> Vanzare</button>
+                            <button class="rent last" onclick="changeSearchType('rent')"><i class="fa fa-ticket"></i> Inchiriere</button>
+                        </div><!-- end .span12 -->
+                    </div><!-- end .row -->
+                    <form class="fixed" id="search-form" name="contact-form" method="POST">
+                        {{ form_start(form) }}
+                        <fieldset>
+                            <div id="formstatus"></div>
+
+                            <div class="row">
+                                <div class="span3">
+                                    <p>
+                                        {{ form_widget(form.location) }}
+                                    </p>
+                                </div><!-- end .span3 -->
+                                <div class="span2">
+                                    <p>
+                                        {{ form_widget(form.county) }}
+                                    </p>
+                                </div><!-- end .span2 -->
+                                <div class="span3">
+                                    <p>
+                                        {{ form_widget(form.propertyType) }}
+                                    </p>
+                                </div><!-- end .span3 -->
+                                <div class="span2">
+                                    <p>
+                                        {{ form_widget(form.minSurface) }}
+                                    </p>
+                                </div><!-- end .span2 -->
+                                <div class="span2">
+                                    <p>
+                                        {{ form_widget(form.maxSurface) }}
+                                    </p>
+                                </div><!-- end .span2 -->
+
+                            </div><!-- end .row -->
+
+                            <div class="row">
+                                <div class="span2">
+                                    <p>
+                                        {{ form_widget(form.rooms) }}
+                                    </p>
+                                </div><!-- end .span2 -->
+
+                                <div class="span2">
+                                    <p>
+                                        {{ form_widget(form.bathrooms) }}
+                                    </p>
+                                </div><!-- end .span2 -->
+                                <div class="span2">
+                                    <p>
+                                        {{ form_widget(form.minPrice) }}
+                                    </p>
+                                </div><!-- end .span2 -->
+                                <div class="span2">
+                                    <p>
+                                        {{ form_widget(form.maxPrice) }}
+                                    </p>
+                                </div><!-- end .span2 -->
+                                <div class="span1">
+                                    <p>
+                                        {{ form_widget(form.floor) }}
+                                    </p>
+                                </div><!-- end .span2 -->
+                                <div class="span3">
+                                    <p>
+                                        {{ form_widget(form.contactType) }}
+                                    </p>
+                                </div><!-- end .span3 -->
+                            </div><!-- end .row -->
+
+                            <p class="last text-right">
+                                <input id="submit" type="submit" name="submit" class="btn btn-orange" value="Cauta" />
+                            </p>
+                            {{ form_widget(form.searchType) }}
+                        </fieldset>
+                    </form><!-- end #contact-form -->
+                    <p>Pentru a cauta un anunt, nu este necesara completarea tuturor criteriilor de sortare.<p>
+
+                </div><!-- end .search -->
+            </div><!-- end .span12 -->
+        </div><!-- end .row -->
+    </div><!-- end .container -->
+
+</div><!-- end .fullwidth-section -->

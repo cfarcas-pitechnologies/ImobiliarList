@@ -1,0 +1,34 @@
+services:
+    barriere.service.parser:
+        class: AppBundle\Service\PageParserService
+        arguments: ["@monolog.logger.parsing", "@doctrine.orm.default_entity_manager"]
+
+    kernel.listener.parser:
+        class: AppBundle\EventListener\ParserListener
+        calls:
+            - [ setParserLoggerService, ["@monolog.logger.parsing"] ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+
+    kernel.listener.parser_command_listener:
+        class: AppBundle\EventListener\ParserCommandListener
+        arguments:
+            logger: "@monolog.logger.parsing"
+        tags:
+            - { name: kernel.event_listener, event: console.exception }
+
+    app.ws.communication_service:
+        class: AppBundle\Service\Parsing\CommunicationService
+        arguments: [ "@monolog.logger.wscomm" ]
+
+    app.ws.params_helper:
+        class: AppBundle\Helper\WSHelper
+        arguments: [ "@app.ws.communication_service", "%services_url%", "@doctrine.orm.entity_manager", "@router"]
+
+    app.user_service:
+        class: AppBundle\Service\UserService
+        arguments: [ "@doctrine.orm.entity_manager", "%services_url%", "@app.ws.communication_service" ]
+
+    app.data_process_service:
+        class: AppBundle\Service\Parsing\DataProcessService
+        arguments: [ '@doctrine.orm.entity_manager' ]

@@ -1,0 +1,994 @@
+/* ==========================================================================
+   =Wrap
+   ========================================================================== */
+
+	#wrap {
+		position: relative;
+		background-color: #fff;
+	}
+	
+	@media (max-width: 767px) {
+
+		#wrap {}
+
+	}
+
+
+/* ==========================================================================
+   =Header 
+   ========================================================================== */
+   	
+	#header {
+		z-index: 3000;
+		margin: 0 auto;
+		background-color: rgba(255,255,255,0.9);
+	}
+	
+/* ==========================================================================
+   =Logo
+   ========================================================================== */
+   
+	#logo {  
+		padding: 43px 0 30px 0;
+	}
+	
+	/**
+	 * 1. displaying the <a> inline-block makes it depends on the size of it's children
+	 *    we add max-width:100% to tell it not that it shouldn't extend beyond the size of it's
+	 *    parent if it's child is very large eg a 1000x1000 logo img
+	 */
+	
+	#logo a {
+		display: inline-block;
+		max-width: 100%; 	/* 1 */
+	}
+	
+	#logo img { display: block; }	
+	
+	@media (max-width: 767px) {
+
+		/**
+		 * 1. on mobile devices logo padding right needs to be the width of the
+		 *	  mobile menu trigger + some spacing so as to not let the logo <a>
+		 *    overlap the mobile menu trigger
+		 */
+	
+		#logo {  
+			padding-right: 50px; 	/* 1 */
+		}
+		
+	}
+	
+/* ==========================================================================
+   =Menu 
+   ========================================================================== */
+
+/* =Menu Basics
+   ========================================================================== */
+   
+	.sf-menu,
+	.sf-menu ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	
+	.sf-menu > li { float: left; }
+
+	.sf-menu > li > a {
+		position: relative;
+		display: block;
+	}
+	
+	/**
+ 	 * 1. z-index is 1025 because the sticky menu is 1020
+ 	 */
+	
+	.sf-menu .sf-mega,
+	.sf-menu li.dropdown ul {
+		position: absolute;
+		z-index: 1025;		/* 1 */
+		top: 100%;
+		left: 0;
+		display: none;
+	}
+	
+	.sf-menu li.dropdown { position: relative; }
+	
+	.sf-menu li.dropdown ul ul {
+		top: -1px;
+		left: 100%;
+	}
+	
+	.sf-menu li:hover > .sf-mega,
+	.sf-menu li.sfHover > .sf-mega,
+	.sf-menu li.dropdown:hover > ul,
+	.sf-menu li.dropdown.sfHover > ul { display: block; }
+
+/* =Menu Skin
+   ========================================================================== */
+	
+	.sf-menu { float: right; } 
+	
+	.sf-menu a {
+		display: block;
+		padding: 10px 0;
+		border-bottom: 1px dotted rgba(0, 0, 0, 0.15);
+		font: 13px 'Open Sans', Arial, sans-serif;
+		color: #111; 
+		text-decoration: none;
+	}
+	
+	.sf-menu li.dropdown a { padding: 10px 15px; }
+	
+	.sf-menu li:last-child > a { border-bottom: none; }
+	
+	.sf-menu > li > a,
+	.sf-menu > li.dropdown > a {
+		padding: 30px 15px 20px;
+		border: none;
+		color: #111;
+		font-size: 14px;
+		text-transform: uppercase;	
+	}
+	
+	.sf-menu > li a i { margin-right: 5px; }
+	
+	.sf-menu > li.current > a,
+	.sf-menu li.sfHover > a,
+	.sf-menu a:hover,
+	.sf-menu li.sfHover a:hover {
+		color: #245dc1;
+		text-decoration: none;	
+	}
+
+/* =DropDown
+   ========================================================================== */
+	
+	/**
+ 	 * 1. allow long menu items to determine submenu width
+ 	 */
+	
+	.sf-menu li.dropdown ul {
+		min-width: 180px; 	/* 1 */
+		border: 1px solid rgba(0, 0, 0, 0.1);	
+		background-color: #fff;			
+	}
+
+	.sf-menu > li.dropdown > ul { border-top: 3px solid #245dc1; }	
+		
+/* =Mega Menu Section
+   ========================================================================== */
+	
+	.sf-mega {
+		width: 100%;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+				box-sizing: border-box;
+		padding: 15px 0;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		border-top: 3px solid #245dc1;
+		margin-top: -1px;	
+		background-color: #fff;
+	}
+
+	.sf-mega-section {
+		float: left;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+				box-sizing: border-box;
+		padding: 0 20px;
+		border-right: 1px solid #e0e0e0;
+	}
+	
+	.sf-mega-section:last-child { border-right: none; }
+
+	/**
+ 	 * 1. set mega menu section size, as a percentage of the mega menu width
+ 	 */
+	
+	.sf-mega.sf-mega-1-col .sf-mega-section{ width: 100%; } /* 1 */
+	
+	.sf-mega.sf-mega-2-col .sf-mega-section{ width: 50%; }
+	
+	.sf-mega.sf-mega-3-col .sf-mega-section{ width: 33.3333333333%; }
+	
+	.sf-mega.sf-mega-4-col .sf-mega-section{ width: 25%; }
+	
+/* =Menu Arrows
+   ========================================================================== */
+	
+	.sf-arrows .sf-with-ul:after {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		width: 0;
+		height: 0;
+		border: 4px solid transparent;
+		border-top-color: #999;
+		margin-top: 0;
+		content: "";
+	}
+		
+	.sf-arrows > li > .sf-with-ul:focus:after,
+	.sf-arrows > li:hover > .sf-with-ul:after,
+	.sf-arrows > .sfHover > .sf-with-ul:after { border-top-color: rgba(0, 0, 0, 0.7); }
+		
+	.sf-arrows ul .sf-with-ul:after {
+		border-color: transparent;
+		border-left-color: #999;
+		margin-top: -5px;
+		margin-right: 10px;
+	}
+	
+	.sf-arrows ul li > .sf-with-ul:focus:after,
+	.sf-arrows ul li:hover > .sf-with-ul:after,
+	.sf-arrows ul .sfHover > .sf-with-ul:after { border-left-color: rgba(0, 0, 0, 0.7); }
+	
+	@media (min-width: 768px) and (max-width: 991px) {
+
+		#menu { display: none; }
+
+	}
+	
+	@media (max-width: 767px) {
+
+		#menu { display: none; }
+	
+	}
+	
+/* ==========================================================================
+   =Mobile Menu 
+   ========================================================================== */
+			
+	#mobile-menu {
+		border-bottom: 1px solid #e0e0e0;
+		margin-bottom: 0;
+	}
+	
+	#mobile-menu li {	
+		display: block;
+		margin: 0;
+	}
+		
+	#mobile-menu > li > ul, 
+	#mobile-menu > li > ul > li > ul {
+		display: none;
+		margin-left: 0;
+	}
+	
+	#mobile-menu .sf-mega {
+		display: none;
+		padding: 0;
+		border: none;
+		margin: 0;
+	}
+	
+	#mobile-menu .sf-mega-section {
+		float: none;
+		width: 100%;
+		padding: 0;
+		border: none;
+	}
+	
+	#mobile-menu .sf-mega-section ul { margin-left: 0; }
+
+	#mobile-menu li a {
+		position: relative;
+		display: block;
+		padding: 15px 25px;
+		border-top: 1px solid #e0e0e0;
+		color: #111;
+		font-size: 13px;
+		text-align: left;
+		text-decoration: none;
+	}
+	
+	#mobile-menu ul a { padding-left: 45px; }
+	
+	#mobile-menu ul li ul a  { padding-left: 65px; }
+	
+	#mobile-menu .mobile-menu-submenu-arrow {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 70px;
+		height: 100%;
+		border-left: 1px solid #e0e0e0;
+		color: #111;
+		font-size: 20px;
+		line-height: 50px;
+		text-align: center;
+		cursor: pointer;
+	}
+	
+	#mobile-menu .mobile-menu-submenu-arrow:hover { background-color: #f3f3f3; }
+	
+	#mobile-menu li a:hover {}
+	
+	#mobile-menu { display: none; }
+
+/* ==========================================================================
+   =Mobile menu trigger
+   ========================================================================== */
+				
+	#mobile-menu-trigger { 
+		float: right;
+		display: none;
+		font-size: 28px;
+	}
+	#mobile-menu-trigger i {
+		color: #101010;
+	}
+
+	@media (min-width: 768px) and (max-width: 991px) {
+
+		#mobile-menu-trigger { 
+			display: block;
+			margin-top: 10px;
+			margin-right: 0;
+		}	
+
+	}
+
+	@media (max-width: 767px) {
+
+		#mobile-menu-trigger { 
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			display: block;
+			padding: 10px;
+			margin-top: 0;
+		}
+		
+		#mobile-menu-trigger i {
+			color: #101010;
+		}
+
+	}
+
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+		#mobile-menu-trigger {}
+	
+	}		
+		
+/* ==========================================================================
+   =Custom search form 
+   ========================================================================== */
+	
+	#custom-search-button + nav { margin-right: 30px; }
+	
+	#custom-search-button { 
+		position: absolute;
+		top: 42px;
+		right: 15px;
+		display: block;
+		width: 16px;
+		height: 18px;
+		background: url(../images/bg-search.png) no-repeat center center;
+	}
+	
+	/**
+ 	 * 1. z-index is 1030 because the dropdown menu has a z-index of 1025 
+ 	 */
+	 
+	#custom-search-form {
+		position: absolute;
+		z-index: 1030; 	/* 1 */
+		top: 87px;
+		right: 5px;
+		display: none;
+	}
+
+	#custom-search-form:before {
+		position: absolute; 
+		z-index: 1; 
+		top: -9px; 
+		right: 10px; 
+		width: 0; 
+		height: 0;
+		border-right: 7px solid transparent; 
+		border-bottom: 10px solid #e0e0e0; 
+		border-left: 7px solid transparent; 
+		content: "";
+	}
+	
+	#custom-search-form:after {
+		position: absolute;
+		z-index: 2; 
+		top: -7px; 
+		right: 10px; 
+		width: 0; 
+		height: 0; 
+		border-right: 7px solid transparent; 
+		border-bottom: 10px solid #fff; 
+		border-left: 7px solid transparent; 
+		content: "";
+	}
+	
+	#custom-search-submit { display: none; }
+	
+	#custom-search-form #s {
+		width: 220px;
+		padding: 8px 10px;
+		border-radius: 0;	
+		background-color: #fff; 
+	}
+	
+	#custom-search-form #s:focus { border-color: #e0e0e0; }
+	
+	
+	@media (min-width: 768px) and (max-width: 991px) {
+
+		#custom-search-button { right: 65px; }
+		#custom-search-form { right: 55px; }
+		
+	}
+	
+	@media (max-width: 767px) {
+
+		/**
+		 * Hide search on mobile
+		 * 1. !important is needed to overwrite the display:block added by the js
+		 */
+	
+		#custom-search-form { 
+			display: none !important; /* 1 */
+		}
+		
+		#custom-search-button { display: none; }
+		
+	}
+
+/* ==========================================================================
+   =Sticky Header
+   ========================================================================== */
+
+	@media (min-width: 1025px) {
+		
+		/**
+		 * 1. The height of the #header-wrap can be increased or decreased to accommodate the logo
+		 */
+		 
+		#header-wrap {
+			position: relative;
+			height: 100px; /* 1 */
+		}
+		
+		#header {
+			position: absolute;
+			top: 0; 					
+			right: 0;
+			left: 0;
+			margin: 0 auto; 
+			
+		}
+		
+		/**
+		 * 1. The z-index has to be 1020 so it is bigger than the back to top buttons z-index that is 1010
+		 */
+		
+		#header.stuck {
+			position: fixed;
+			z-index: 1020; /* 1 */
+			top: 0;
+			width: 100%;
+			padding: 5px 0 0 0;
+			margin: 0 auto;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);			
+			background-color: rgba(255, 255, 255, 0.95);
+			-webkit-transition: padding 0.3s;
+					transition: padding 0.3s;
+		}
+		
+		#header.stuck #logo { 
+			padding: 0;
+			margin: 0 0 10px;
+		}
+		
+		#header.stuck .sf-menu > li > a,
+		#header.stuck .sf-menu > li.dropdown > a { padding: 20px 15px 10px; }
+		
+		#header.stuck .sf-mega { margin-top: 0; }
+
+		#header.stuck .sf-arrows .sf-with-ul:after { margin-top: -6px; }		
+	
+		#header.stuck #custom-search-button { top: 12px; }
+		#header.stuck #custom-search-form { top: 52px; }
+	
+	}
+	
+/* ==========================================================================
+   =Content
+   ========================================================================== */
+   	
+	#content { padding-bottom: 40px; }
+
+/* ==========================================================================
+   =Page Header
+   ========================================================================== */
+   	
+	#page-header { 
+		padding: 35px 0;
+		margin-bottom: 40px;
+		background-color: #f3f3f3; 
+	}
+	
+	#page-header h3 { margin-bottom: 0; }
+
+/* ==========================================================================
+   =Fullwidth Section
+   ========================================================================== */
+   
+    /**
+ 	 * Full width section
+ 	 *
+	 * 1. background-image must be supplied using inline css as it is different for every .fullwidth-section
+	 *
+	 */
+	 
+   .fullwidth-section {
+		position: relative;
+		overflow: hidden;
+		z-index: 0;	
+		padding: 30px 0;
+		color: #fff;
+		background-color: #245dc1;
+		background-attachment: scroll;
+		background-repeat: no-repeat; /* 1 */ 
+		background-position: 50% 0;		
+	}
+
+	.fullwidth-section-content {
+		position: relative;
+		z-index: 3;
+	}
+   
+   	.fullwidth-section-overlay {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-repeat: repeat;
+		background-position: 0 0;	
+	}
+	
+	.fullwidth-section-video {
+		position: absolute;
+		overflow: hidden;
+		z-index: 1;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	
+	/**
+ 	 *
+	 * 1. We add background-size cover so the parallax looks ok if you provide smaller images
+	 *
+	 */
+	
+	.parallax.parallax-enabled { 
+		background-attachment: fixed !important;
+		-webkit-background-size: cover;
+				background-size: cover;	/* 1 */
+	}
+	
+	.horizontal-parallax { background-repeat: repeat-x; }
+	
+	.animated-parallax { background-repeat: repeat-x; }
+	
+	@media (max-width: 767px) {
+
+		.fullwidth-section {
+			-webkit-background-size: cover;
+					background-size: cover;		
+		}
+		
+	}
+	
+/* ==========================================================================
+   =Footer Top
+   ========================================================================== */
+
+	#footer-top { background-color: #f9f9f9; }
+	
+	#footer-top-widget-area-1 {}
+   
+/* ==========================================================================
+   =Footer
+   ========================================================================== */		
+	
+	#footer { 
+		
+	}
+	
+	#footer-widget-area-1 {}
+	#footer-widget-area-2 {}
+	#footer-widget-area-3 {}
+	#footer-widget-area-4 {}
+	
+/* ==========================================================================
+   =Footer Bottom
+   ========================================================================== */	
+  
+	#footer-bottom { 
+		
+	}
+	
+	#footer-bottom-widget-area-1 {}
+	#footer-bottom-widget-area-2 {}
+	
+/* ==========================================================================
+   =Back to top
+   ========================================================================== */
+
+	#back-to-top {
+		position: fixed;
+		z-index: 1010;
+		right: -40px;
+		bottom: 20px;
+		width: 40px;
+		height: 40px;
+		background-color: #111;
+		color: #fafafa;
+		font-size: 30px;
+		line-height: 40px;
+		text-align: center;					
+		opacity: 0.5;
+		cursor: pointer;
+		-webkit-transition: all 0.4s ease 0s;
+				transition: all 0.4s ease 0s;
+	}
+	
+	#back-to-top i {
+		font-size: 37px;
+		line-height: 40px;
+		font-weight: normal;
+		vertical-align: top;
+		-webkit-transition: all 0.4s ease 0s;
+				transition: all 0.4s ease 0s;
+	}
+	
+	#back-to-top:hover { background-color: rgba(0, 0, 0, 0.7); }
+	#back-to-top:hover i { color: #fff; }
+	#back-to-top.visible { right: 40px; }
+	#back-to-top.gone { right: -40px; }	
+
+/* ==========================================================================
+   =Misc
+   ========================================================================== */
+   
+	.javascript-required,
+	.modern-browser-required {
+	    padding: 15px 0;
+		background-color: #d50f25;
+		color: #fff;
+		font-weight: 700;
+		text-align: center;
+	}
+	
+/* ==========================================================================
+   =Custom
+   ========================================================================== */
+   
+	a:hover, a:focus {
+		text-decoration: none;
+	}
+   
+	.color-orange {
+		color:#ff8800;
+	}
+   
+	#logo {
+		margin: 10px 0;
+		padding: 0;
+		display: block;
+	}
+   
+    .full-screen {
+		background: url(../images/bg-header.jpg)no-repeat center center;
+		background-size: cover;
+    }
+   
+   .search {
+		margin-top: 200px;
+    }
+	
+	.search form {
+		padding: 50px 30px;
+		background-color: rgba(0,0,0,0.8);
+		border-top: 3px solid #ff8800;
+	}
+   
+   .search button {		
+		width: 32.3333%;
+		padding: 15px 0px;
+		margin-right: 1%;
+		border: 0;
+		border-top-left-radius: 7px;
+		border-top-right-radius: 7px;
+		font-size: 14px;
+		text-transform: uppercase;
+		text-align: center;
+		background-color: rgba(0,0,0,0.8);
+		color: #fff;	
+		display: inline-block;
+   }
+   
+   .search button.active {
+		background-color: #ff8800;
+   }
+   
+    .search button.last {
+		margin-right: 0;
+	}
+   
+   
+	#search-form fieldset {
+		border: 0;
+		padding: 0;
+		margin: 0;
+    }
+   
+	#search-form input[type="text"],
+	#search-form input[type="number"],
+	#search-form select {
+		width: 100%;		
+		padding: 10px 20px;
+		margin-bottom: 30px;
+		border-width: 0 0 1px 0;
+		color: #fff;
+		background-color: transparent;
+	}
+	
+	
+
+	select.minimal {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		background-image:
+		linear-gradient(45deg, transparent 50%, white 50%),
+		linear-gradient(135deg, white 50%, transparent 50%),
+		linear-gradient(to right, #ccc, #ccc);
+		background-position:
+		calc(100% - 20px) calc(1em + 2px),
+		calc(100% - 15px) calc(1em + 2px),
+		calc(100% - 2.5em) 0.5em;
+		background-size:
+		5px 5px,
+		5px 5px,
+		1px 1.5em;
+		background-repeat: no-repeat;
+	}
+
+	select.minimal:focus {
+		background-image:
+		linear-gradient(45deg, white 50%, transparent 50%),
+		linear-gradient(135deg, transparent 50%, white 50%),
+		linear-gradient(to right, #ccc, #ccc);
+		background-position:
+		calc(100% - 15px) 1em,
+		calc(100% - 20px) 1em,
+		calc(100% - 2.5em) 0.5em;
+		background-size:
+		5px 5px,
+		5px 5px,
+		1px 1.5em;
+		background-repeat: no-repeat;
+		border-color: #fff;
+		outline: 0;
+	}
+	
+	#search-form select option {
+		padding: 7px 25px;
+		background-color: #474747;
+		border: 0;
+	}
+	
+	#usage {
+		text-align: center;
+		padding: 120px 0;
+	}
+  
+	#usage i {
+		margin: 50px 0 30px;
+		font-size: 50px;
+		color: #ff8800;
+	}
+
+	#usage p.first {
+		margin-top: 50px;
+	}
+	
+	#stats {
+		padding: 120px 0;
+		background-image: url(../images/bg-stats.jpg);
+	}
+	
+	#about {
+		padding: 120px 0;
+	}
+	
+	#client {
+		padding: 120px 0;
+		background-image: url(../images/bg-client.jpg);
+	}
+	
+	#client .btn {
+		margin-bottom: 0;
+		padding: 20px 25px;
+	}
+	
+	#clients {
+		padding: 120px 0;
+	}
+	
+	#contact {
+		padding: 120px 0;
+		background-image: url(../images/bg-contact.jpg);
+	}
+	
+	#results {
+		padding: 120px 0;
+		background-color: #eee;
+	}
+	
+	.sort p {
+		display: block;
+	}
+	
+	.sort a{
+		padding: 7px 15px;
+		border-bottom: 1px solid #ddd;
+		color: #bbb;
+		text-transform: uppercase;
+		display: inline-block;
+		float: right;
+	}
+	
+	.item {
+		color: #101010;
+		background-color: #fff;
+		margin-bottom: 30px;
+	}
+       
+	.item p#propertyType {
+		padding: 7px 0;
+		text-align: center;
+		background-color: #ff8800;
+		text-transform: uppercase;
+		color: #fff;
+	}
+	
+	.item p#title, .item p#description {
+		margin-bottom: 0;
+	}
+	
+	.item p#title {
+		padding-top: 15px;
+		font-size: 20px;
+	}
+		
+		
+	.item p#price {
+		padding: 15px 0;
+		margin-bottom: 10px;
+		background-color: #888;
+		color: #fff;
+		font-size: 20px;
+		text-align: center;
+		font-weight: bold;
+	}
+	
+	.item p#contactType {
+		text-align: center;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+		color: #888;
+	}
+	
+	.item p#description {
+		color: #868686;
+	}
+	
+	.item-details {
+		margin-bottom: 0;
+	}
+	
+	.item-details span{
+		padding: 5px 10px;
+		border: 1px solid #d4d4d4;
+		margin-right: 15px;
+		margin-top: 15px;
+		display: inline-block;
+	}
+	
+	.item-details i {
+		color: #ff8800;
+	}
+	
+	.item p#offerLink {
+		margin-bottom: 0;
+	}
+	
+	.item p#offerLink a{
+		margin-bottom: 0;
+		text-transform: uppercase;
+		display: block;
+		background-color: #ff8800;
+		color: #fff;
+		text-align: center;
+		padding: 13px;
+		-webkit-transition: background 0.3s ease;
+				transition: background 0.3s ease;
+		
+	}
+	
+	.item p#offerLink a:hover, .item p#offerLink a:focus{
+		text-decoration: none;
+		background-color: #ff5e00;
+	}
+   
+	.table-listing a{
+		color: #d4d4d4;
+		font-size: 32px;
+		margin-right: 15px;
+		
+	}
+	
+	.current {
+		color: #ff8800;
+	}
+	
+/* ==========================================================================
+   = tablets : (min-width: 768px) and (max-width: 991px)
+   ========================================================================== */
+
+	
+	@media (min-width: 768px) and (max-width: 991px) {
+
+		.search button {
+			width: 30%;
+		}
+		
+		#search-form .span3, #search-form .span2, #search-form .span1 {
+			width: 33.3333%;
+		}
+		
+		.search {
+			margin-top: 100px;
+		}
+
+	}
+	
+/* ==========================================================================
+   =Extra small devices: Phones (< 768px)
+   ========================================================================== */
+
+   
+	@media (max-width: 767px) {
+		.search {
+			margin-top: 50px;
+		}
+		.item p#title, .item p#description {
+			text-align: center;
+		}
+		.item p#price {
+			margin-top: 15px;
+		}
+		.search button {
+			width:100%;
+			border-radius: 0;
+		}
+		.btn-orange, input.btn-orange {
+			width: 100%;
+		}
+	}
+   
+   
+   

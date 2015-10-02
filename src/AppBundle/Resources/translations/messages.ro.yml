@@ -1,0 +1,6 @@
+homepage:
+    rooms: "{1} camera|]1,Inf] camere"
+    bathrooms: "{1} baie|]1,Inf] bai"
+
+error:
+    search-offers: Nu au fost gasite rezultate care sa corespunda criteriilor cautate! Va rugam incercati din nou, cautand dupa alte criterii.

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,requiresActiveX=true">
+
+        <title>{% block title %}Imobiliar List{% endblock %}</title>
+	<meta name="description" content=" add description  ... ">
+
+        {% block favicon %}
+            <!-- /// Favicons ////////  -->
+            <link rel="shortcut icon" href="favicon.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+            <meta name="msapplication-TileColor" content="#245dc1">
+            <meta name="msapplication-TileImage" content="mstile.png">
+            <meta name="theme-color" content="#245dc1">
+        {% endblock %}
+
+
+        {% block stylesheets %}
+            <!-- /// Google Fonts ////////  -->
+            <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700">
+            <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700">
+            <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700">
+
+            <!-- /// FontAwesome Icons 4.3.0 ////////  -->
+            <link rel="stylesheet" href="{{ asset('bundles/app/fonts/fontawesome/font-awesome.min.css') }}">
+
+            <!-- /// Custom Icon Font ////////  -->
+            <link rel="stylesheet" href="{{ asset('bundles/app/fonts/iconfontcustom/icon-font-custom.css') }}">
+
+            <!-- /// Plugins CSS ////////  -->
+            {% stylesheets
+                'bundles/app/vendors/revolutionslider/css/settings.css'
+                'bundles/app/vendors/bxslider/jquery.bxslider.css'
+                'bundles/app/vendors/magnificpopup/magnific-popup.css'
+                'bundles/app/vendors/animations/animate.min.css'
+                'bundles/app/vendors/itplayer/css/YTPlayer.css' filter='cssrewrite,?yui_css' %}
+            <link href="{{ asset_url }}" rel="stylesheet" />
+            {% endstylesheets %}
+
+            <!-- /// Template CSS ////////  -->
+            {% stylesheets
+                'bundles/app/css/main.css'
+                'bundles/app/css/reset.css'
+                'bundles/app/css/grid.css'
+                'bundles/app/css/elements.css'
+                'bundles/app/css/layout.css'
+                'bundles/app/css/components.css'
+                'bundles/app/css/wordpress.css' filter='cssrewrite,?yui_css' %}
+            <link href="{{ asset_url }}" rel="stylesheet"/>
+            {% endstylesheets %}
+
+
+            <!-- /// Boxed layout ////////  -->
+            <!-- <link rel="stylesheet" href="assets/css/boxed.css"> -->
+
+            <!-- /// Template Skin CSS ////////  -->
+            <!-- <link rel="stylesheet" href="assets/css/skins/default.css"> -->
+            <!-- <link rel="stylesheet" href="assets/css/skins/red.css"> -->
+
+
+            <!-- /// Style Switcher CSS ////////  -->
+            <link rel="stylesheet" href="assets/css/wide.css" id="template-layout">
+            <link rel="stylesheet" href="assets/css/skins/default.css" id="template-skin">
+            <link rel="stylesheet" href="assets/vendors/switcher/switcher.css">
+        {% endblock %}
+    </head>
+
+<body class="sticky-header">
+    <!-- Style Switcher read settings for layout and skin -->
+    <script src="{{ asset('bundles/app/vendors/switcher/readcookies.js') }}"></script>
+
+    <noscript>
+        <div class="javascript-required">
+            You seem to have Javascript disabled. This website needs javascript in order to function properly!
+        </div>
+    </noscript>
+
+	<!--[if lte IE 8]>
+         <div class="modern-browser-required">
+        	You are using an <strong>outdated</strong> browser. Please
+        	<a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">upgrade your browser</a>
+            to improve your experience.
+		</div>
+    <![endif]-->
+
+    <div id="wrap">
+    {% block header %}
+        {% include '::header.html.twig' %}
+    {% endblock %}
+
+    {% block body %}{% endblock %}
+
+    {% block footer %}
+        {% include '::footer.html.twig' %}
+    {% endblock %}
+
+    <a id="back-to-top" href="#">T</a>
+
+    {% block javascripts %}
+        {% javascripts
+            'bundles/app/vendors/jquery-2.1.3.min.js'
+            'bundles/app/vendors/viewport/jquery.viewport.js'
+            'bundles/app/vendors/easing/jquery.easing.1.3.js'
+            'bundles/app/vendors/simpleplaceholder/jquery.simpleplaceholder.js'
+            'bundles/app/vendors/fitvids/jquery.fitvids.js'
+            'bundles/app/vendors/animations/animate.js'
+            'bundles/app/vendors/superfish/hoverIntent.js'
+            'bundles/app/vendors/superfish/superfish.js'
+            'bundles/app/vendors/revolutionslider/js/jquery.themepunch.tools.min.js'
+            'bundles/app/vendors/revolutionslider/js/jquery.themepunch.revolution.min.js'
+            'bundles/app/vendors/bxslider/jquery.bxslider.min.js'
+            'bundles/app/vendors/magnificpopup/jquery.magnific-popup.min.js'
+            'bundles/app/vendors/isotope/imagesloaded.pkgd.min.js'
+            'bundles/app/vendors/isotope/isotope.pkgd.min.js'
+            'bundles/app/vendors/parallax/jquery.parallax.min.js'
+            'bundles/app/vendors/easypiechart/jquery.easypiechart.min.js'
+            'bundles/app/vendors/itplayer/jquery.mb.YTPlayer.js'
+            'bundles/app/vendors/easytabs/jquery.easytabs.min.js'
+            'bundles/app/vendors/jqueryvalidate/jquery.validate.min.js'
+            'bundles/app/vendors/typeahead.bundle.min.js'
+            'bundles/app/vendors/jqueryform/jquery.form.min.js' filter='?yui_js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        <!-- /// gMap ////////  -->
+	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script src="assets/vendors/gmap/jquery.gmap.min.js"></script>
+
+        {% javascripts
+            'bundles/app/vendors/twitter/twitterfetcher.js'
+            'bundles/app/js/main.js'
+            'bundles/app/js/custom.js'
+            'bundles/app/vendors/switcher/jquery_cookie.js'
+            'bundles/app/vendors/switcher/switcher.js' filter='?yui_js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+
+    {% block extra_javascripts %}{% endblock %}
+</body>
+</html>
+

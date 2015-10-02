@@ -1,0 +1,27 @@
+app_homepage:
+    path: /
+    defaults: { _controller: AppBundle:Main:index }
+
+app_static:
+    path: /static/{filename}
+    defaults: { _controller: AppBundle:StaticFile:static }
+    requirements:
+        filename:  .+
+
+app_terms:
+    path: /terms-conditions
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    app/partials/terms.html.twig
+        
+app_search:
+    path: /search
+    defaults: { _controller: AppBundle:Main:search }
+    
+app_parse:
+    path: /parse
+    defaults: { _controller: AppBundle:Main:parse }
+    
+app_price_sort:
+    path: /price-sort
+    defaults: { _controller: AppBundle:Main:priceSort }

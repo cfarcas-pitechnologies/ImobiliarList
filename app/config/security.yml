@@ -1,0 +1,40 @@
+security:
+    encoders:
+      Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
+            memory:
+              users:
+                barriere_admin: { password: Abcdef1, roles: [ 'ROLE_ADMIN' ] }
+        parser:
+            memory:
+                users:
+                    admin: { password: X8_J8qdbwK`zT4hF, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+            security: false
+
+        default:
+            pattern: /
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path:   logout
+                target: login
+            anonymous:    true
+            
+        parse:
+            pattern: /parse
+            http_basic: true
+            provider:  parser
+            logout: true
+
+    access_control:
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

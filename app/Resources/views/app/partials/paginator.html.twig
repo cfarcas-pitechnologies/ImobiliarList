@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="span12">
+        <div class="text-center paginator">
+            {% if pager.hasPreviousPage %}
+                {% if pager.previousPage != 1 %}
+                    <button class="pager-click" href="{{ path('app_search', {'page' : 1}) }}"><<</button>
+                    <button class="pager-click" href="{{ path('app_search', {'page' : pager.previousPage}) }}"><</button>
+                    <button class="pager-click" href="{{ path('app_search', {'page' : 1}) }}">1</button>
+                    <button>...</button>
+                {% endif %}
+                <button class="pager-click" href="{{ path('app_search', {'page' : pager.previousPage}) }}">{{ pager.previousPage }}</button>
+            {% endif %}
+            <button class="pager-click active" href="{{ path('app_search', {'page' : pager.currentPage}) }}">{{ pager.currentPage }}</button>
+            {% if pager.hasNextPage %} 
+                <button class="pager-click" href="{{ path('app_search', {'page' : pager.nextPage}) }}">{{ pager.nextPage }}</button>
+                {% if pager.nextPage != pager.nbPages %}
+                    <button>...</button>
+                    <button class="pager-click" href="{{ path('app_search', {'page' : pager.nbPages}) }}">{{ pager.nbPages }}</button>
+                    <button class="pager-click" href="{{ path('app_search', {'page' : pager.nextPage}) }}">></button>
+                    <button class="pager-click" href="{{ path('app_search', {'page' : pager.nbPages}) }}">>></button>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>

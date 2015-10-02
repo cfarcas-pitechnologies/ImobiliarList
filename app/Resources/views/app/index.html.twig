@@ -1,0 +1,33 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div id="content">
+
+        <!-- /// CONTENT  /////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+        {% include 'app/partials/search.html.twig' %}
+
+        <div class="fullwidth-section parallax" id="results">
+            {% include 'app/partials/results.html.twig' %}
+        </div><!-- end .fullwidth-section -->
+
+        {% include 'app/partials/usage.html.twig' %}
+
+        {% include 'app/partials/stats.html.twig' %}
+
+        {% include 'app/partials/about.html.twig' %}
+
+        {% include 'app/partials/client.html.twig' %}
+
+        {% include 'app/partials/clients.html.twig' %}
+
+    </div><!-- end #content -->
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    <script>
+        var searchUrl = "{{ path('app_search') }}",
+                priceSortURL = "{{ path('app_price_sort') }}";
+    </script>
+{% endblock %}

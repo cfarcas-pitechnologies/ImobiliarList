@@ -1,0 +1,41 @@
+entities:
+    anaimobil:
+        title: productitem_link/_title
+        price: pricevalue_number/_source
+        priceSymbol: label
+        imageLink: imagewrapper_image
+        offerLink: productitem_link
+        county: Mures
+        location:
+        propertyType:
+        bathrooms:
+        floor:
+        surface:
+            0: linetop_values_numbers/_source
+            1: 1
+        rooms:
+            0: linetop_values_numbers/_source
+            1: 0
+        description: productitem_link/_text
+    privatestate:
+        title: propertyitemarticle_link/_title
+        price: priceh5_value
+        priceSymbol: 
+        imageLink: propertyitem_image
+        offerLink: propertyitemfigure_link
+        county: Mures
+        location:
+        propertyType: pricesmall_value
+        bathrooms:
+            0: propertymeta_values_numbers
+            1: 2
+        floor:
+            0: propertymeta_values_numbers
+            1: 3
+        surface:
+            0: propertymeta_values_numbers
+            1: 0
+        rooms:
+            0: propertymeta_values_numbers
+            1: 1
+        description: detail_value

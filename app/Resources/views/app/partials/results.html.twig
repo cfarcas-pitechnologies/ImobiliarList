@@ -1,0 +1,85 @@
+<div class="fullwidth-section-content">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="span6 table-listing  hidden-phone">
+
+                <p>
+                    <a><i class="fa fa-th-list current"></i></a> 
+                </p>
+
+            </div><!-- end .span6 -->	
+            {# TODO: price sort
+            <div class="span6">
+
+                <p class="sort fixed" id="price-sort"><a href="">sortare pret <i class="fa fa-sort-asc"></i></a></p>
+
+            </div><!-- end .span12 -->	#}						
+        </div><!-- end .row -->  
+
+        {% if error is defined and error is not empty %}
+            <div class="row">
+                <div class="span12">
+                    <h3 class="color-orange text-center">{{ error }}</h3>
+                </div>
+            </div>
+        {% endif %}
+        {% for offer in pager %}
+            <div class="row">
+                <div class="span12">
+
+                    <div class="item">
+                        <div class="row">
+                            <div class="span2">
+
+                                <p class="last text-center" id="image">
+                                    <img src="{{ offer.imageLink }}">
+                                </p>										
+                                <p class="last" id="propertyType">{{ offer.propertyType }}</p>
+                            </div><!-- end span2 -->
+                            <div class="span8">
+
+                                <p id="title">{{ offer.title }}</p>
+                                <p id="description">Descriere: {{ offer.description }}</p>
+                                <p class="item-details">
+                                    {% if offer.county is not empty %}
+                                        <span id="county"><i class="fa fa-map-marker"></i> Judet: {{ offer.county }}</span>
+                                    {% endif %}
+                                    {% if offer.location is not empty %}
+                                        <span id="location"> <i class="fa fa-location-arrow"></i> Locatie: {{ offer.location }}</span>
+                                    {% endif %}
+                                    {% if offer.surface is not empty %}
+                                        <span id="surface"><i class="fa fa-arrows-alt"></i> {{ offer.surface }} mp</span>
+                                    {% endif %}
+                                    {% if offer.rooms is not empty %}
+                                        <span id="rooms"><i class="fa fa-bed"></i> {{ offer.rooms  }} {{ 'homepage.rooms' | transchoice(offer.rooms)  }} </span>
+                                    {% endif %}
+                                    {% if offer.bathrooms is not empty %}
+                                        <span id="bathrooms"><img src="{{ asset('bundles/app/images/tub.png') }}"> {{ offer.bathrooms }} {{ 'homepage.bathrooms' | transchoice(offer.bathrooms)  }} </span>
+                                    {% endif %}
+                                    {% if offer.floor is not empty %}
+                                        <span id="floor"><i class="fa fa-building-o"></i> Etaj {{ offer.floor }} </span>
+                                    {% endif %}
+                                </p>
+                            </div><!-- end .span8 -->
+
+                            <div class="span2">
+
+                                <p id="price">{{ offer.price }}</p>
+                                <p id="contactType">{{ offer.contactType }}</p>
+                                <p id="offerLink">
+                                    <a target="_blank" href="{{ offer.offerLink }}">Vezi Oferta</a>
+                                </p>
+                            </div><!-- end .span2 -->
+
+                        </div>								
+                    </div><!-- end item -->
+
+                </div><!-- end .span12 -->							
+            </div><!-- end .row -->
+        {% endfor %}
+        {% include 'app/partials/paginator.html.twig' %}
+    </div><!-- end .container -->
+
+</div><!-- end .fullwidth-section-content -->

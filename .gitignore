@@ -1,0 +1,25 @@
+#sf2 folders to exclude
+/web/bundles/
+/web/css/
+/web/js/
+/app/bootstrap.php.cache
+/app/cache/*
+/app/config/parameters.yml
+/app/logs/*
+/build/
+/vendor/
+/bin/
+/composer.phar
+*~
+
+# IDE settings
+.buildpath
+.externalToolBuilders/
+.project
+.settings/
+.idea
+.apdisk
+
+# Excluding unwanted files
+.DS_Store
+/nbproject/*
